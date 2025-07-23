@@ -152,8 +152,10 @@ If it uses all its time before 100ms → **it gets throttled until the next wind
 
 ---
 
-## 📚 Further Reading
+## 📘 References
 
-- [Understanding Resource Limits in Kubernetes: Memory](https://medium.com/@betz.mark/understanding-resource-limits-in-kubernetes-memory-6b41e9a955f9)
-- [Understanding Resource Limits in Kubernetes: CPU Time](https://medium.com/@betz.mark/understanding-resource-limits-in-kubernetes-cpu-time-9eff74d3161b)
+- [Kubernetes CPU Time – Mark Betz](https://medium.com/@betz.mark/understanding-resource-limits-in-kubernetes-cpu-time-9eff74d3161b)
+- [Kubernetes Memory – Mark Betz](https://medium.com/@betz.mark/understanding-resource-limits-in-kubernetes-memory-6b41e9a955f9)
+- [Linux Kernel CFS Docs](https://www.kernel.org/doc/html/latest/scheduler/sched-design-CFS.html)
+- [Kubernetes Resource Management](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/)
 

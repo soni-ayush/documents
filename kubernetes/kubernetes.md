@@ -8,4 +8,4 @@ Kubernetes allows you to manage compute resources for your containers using reso
 
 For a detailed explanation of how Kubernetes manages CPU and memory resources, including how Linux cgroups enforce these limits and what happens when limits are exceeded, see:
 
-- [pod_resource_cpu_memory.md](pod_resource_cpu_memory.md)
+- [Kubernetes Resource CPU and Memory](pod_resource_cpu_memory.md)

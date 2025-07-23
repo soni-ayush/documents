@@ -148,6 +148,20 @@ If it uses all its time before 100ms → **it gets throttled until the next wind
 | B         | 2500ms         |
 | C         | 2500ms         |
 
+### Example: CPU Allocation Over 400ms (4 Cycles)
+
+| Cycle (100ms) | A (max 50ms) | B (max 25ms) | C (rest, up to 25ms) | Notes                       |
+|--------------|--------------|--------------|----------------------|-----------------------------|
+| 1            | 50           | 25           | 25                   | All busy, each gets max     |
+| 2            | 50           | 25           | 25                   |                             |
+| 3            | 50           | 25           | 25                   |                             |
+| 4            | 50           | 25           | 25                   |                             |
+| **Total (400ms)** | **200**      | **100**      | **100**                |                             |
+
+- In each 100ms cycle, A gets up to 50ms, B up to 25ms, and C gets the remaining 25ms (if all are busy).
+- Over 400ms, A receives 200ms, B receives 100ms, and C receives 100ms of CPU time.
+- If A or B are not fully utilizing their quota, C can use more CPU in that cycle.
+
 ---
 
 ## 🧠 8. Combined Behavior: Scheduling vs Runtime

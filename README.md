@@ -1,2 +1,6 @@
-# documents
-this repo contains the documents for interview prep and understanding concepts 
+
+# Kubernetes
+This section contains documents related to Kubernetes concepts and operations:
+
+- [kubernetes/kubernetes.md](kubernetes/kubernetes.md): Overview and key concepts of Kubernetes.
+

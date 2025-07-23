@@ -1,7 +1,5 @@
 # 🧵 Kubernetes Resource Management – CPU & Memory (Deep Dive)
 
----
-
 ## 🚦 How Scheduling & Resource Guarantees Work in Kubernetes
 
 - **Pod Scheduling:**

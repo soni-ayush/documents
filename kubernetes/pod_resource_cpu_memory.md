@@ -2,6 +2,28 @@
 
 ---
 
+## 🚦 How Scheduling & Resource Guarantees Work in Kubernetes
+
+- **Pod Scheduling:**
+  - The Kubernetes scheduler places pods onto nodes based on the sum of their resource **requests** (CPU and memory). Requests represent the minimum resources a pod needs to run.
+  - If a node has enough unallocated resources to satisfy the requests of a new pod, the pod can be scheduled there.
+
+- **Summary:** Requests are only guaranteed during scheduling. Once a pod is scheduled, it may not always get its full requested resources at runtime if the node is overcommitted or other pods use more than their requests (especially if limits are not set). This is particularly important for memory, as memory is not compressible and pods may be killed if the node runs out of memory. For CPU, requests guarantee a fair share during contention, but actual usage may vary if limits are not set.
+
+- **Resource Guarantees After Scheduling:**
+  - **CPU Requests:**
+    - The requested amount of CPU is guaranteed as a share of the node’s CPU when there is contention. However, if you do not set a CPU limit, a pod can use more CPU than requested when available, but may be throttled if it exceeds its limit (if set).
+  - **Memory Requests:**
+    - The requested memory is used for scheduling, but **memory is not overcommitted**—if a pod tries to use more memory than is available on the node, it may be killed by the OOM killer, especially if limits are not set or are set too high.
+    - If you do not set a memory limit, a pod can use more than its request, up to the node’s available memory, but risks being killed if the node runs out of memory.
+    - **Important:** Memory requests are only guaranteed during scheduling. After a pod is scheduled, it may not always get its full requested memory at runtime if the node is overcommitted or other pods use more than their requests (especially if limits are not set).
+
+- **Best Practice:**
+  - Always set both requests and limits for memory to avoid unexpected OOM kills.
+  - For CPU, requests guarantee a fair share, but limits cap usage. Not setting a limit allows burst usage but may impact other pods.
+
+---
+
 ## 📦 1. Resource Types in Kubernetes
 
 | Resource | `requests` (soft)                | `limits` (hard)                          | Linux Mechanism                     |
